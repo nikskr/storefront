@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "node scripts/clean.mjs",
     "build": "npm run clean && tsc && node scripts/copy-static.mjs",
-    "dev": "npm run build && netlify dev",
+    "dev": "node scripts/dev.mjs",
     "typecheck": "tsc --noEmit && tsc -p netlify --noEmit",
     "lint": "eslint --fix .",
     "format": "prettier --write .",

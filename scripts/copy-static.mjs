@@ -1,10 +1,5 @@
-// Copies everything from src/ except TypeScript into dist/:
-// HTML, CSS, images, fonts. JS in dist/ is produced by tsc.
-import { cpSync, existsSync } from 'node:fs';
+// Build step: copies HTML, CSS, images and fonts from src/ into dist/.
+// JS in dist/ is produced by tsc. See scripts/static.mjs.
+import { copyAllStatic } from './static.mjs';
 
-if (existsSync('src')) {
-  cpSync('src', 'dist', {
-    recursive: true,
-    filter: (source) => !source.endsWith('.ts'),
-  });
-}
+await copyAllStatic();

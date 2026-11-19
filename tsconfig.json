@@ -29,6 +29,8 @@
     // Module safety
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
+    // Node strips types when build scripts import src/data/*.ts directly
+    "erasableSyntaxOnly": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "forceConsistentCasingInFileNames": true,
