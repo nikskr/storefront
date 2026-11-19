@@ -1,5 +1,6 @@
 node_modules
 dist
 coverage
+.netlify
 package-lock.json
 .husky

@@ -1,0 +1,13 @@
+{
+  // Type-checks Netlify Functions (Node runtime). Netlify bundles them itself,
+  // so this config never emits; it may import shared modules from src/.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "..",
+    "noEmit": true,
+    "lib": ["es2023"],
+    "types": ["node"]
+  },
+  "include": ["functions/**/*.ts", "lib/**/*.ts"],
+  "exclude": []
+}

@@ -5,7 +5,7 @@ import prettier from 'eslint-config-prettier';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-  globalIgnores(['dist/', 'coverage/', 'node_modules/']),
+  globalIgnores(['dist/', 'coverage/', 'node_modules/', '.netlify/']),
 
   js.configs.recommended,
   tseslint.configs.recommended,
@@ -16,9 +16,9 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
 
-  // Tooling configs run in Node
+  // Tooling configs, build scripts and Netlify Functions run in Node
   {
-    files: ['*.{js,mjs,cjs,ts}'],
+    files: ['*.{js,mjs,cjs,ts}', 'scripts/**/*.mjs', 'netlify/**/*.ts'],
     languageOptions: { globals: globals.node },
   },
 
