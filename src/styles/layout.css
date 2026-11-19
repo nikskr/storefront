@@ -1,0 +1,36 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page__main {
+  flex: 1;
+}
+
+.container {
+  width: min(100% - 2 * var(--container-gutter), var(--container-width));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-7);
+}
+
+.section__title {
+  margin: 0 0 var(--space-6);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary-dark);
+  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --container-gutter: 2rem;
+  }
+
+  .section {
+    padding-block: var(--space-8);
+  }
+}

@@ -1,0 +1,164 @@
+/* Order form under the cart. */
+.checkout {
+  padding-top: var(--space-5);
+  margin-top: var(--space-5);
+  border-top: 2px solid var(--color-primary-light);
+}
+
+.checkout[hidden],
+.checkout__form[hidden],
+.checkout__success[hidden],
+.checkout__error[hidden] {
+  display: none;
+}
+
+.checkout__form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.checkout__title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.checkout__error {
+  padding: var(--space-3);
+  margin: 0;
+  color: var(--color-error);
+  background-color: var(--color-error-light);
+  border-radius: var(--radius-sm);
+}
+
+.checkout__submit {
+  width: 100%;
+}
+
+.checkout__submit[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.checkout__submit[aria-disabled='true']:hover {
+  background-color: var(--color-primary);
+}
+
+/* Honeypot: clipped, not display:none (some bots skip hidden fields).
+   Not shifted off-screen: that would scroll the cart panel sideways. */
+.checkout__trap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.checkout__success {
+  padding: var(--space-5);
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-sm);
+}
+
+.checkout__success:focus {
+  outline: none;
+}
+
+.checkout__success-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary-dark);
+}
+
+.checkout__success-text {
+  margin: 0;
+}
+
+/* Form field: label, input, hint, error. */
+.field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.field__label {
+  font-weight: 600;
+}
+
+.field__input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition);
+}
+
+.field__input:hover {
+  border-color: var(--color-text-muted);
+}
+
+.field__input:focus-visible {
+  border-color: var(--color-primary);
+  outline-offset: 0;
+}
+
+.field__input[aria-invalid='true'] {
+  border-color: var(--color-error);
+}
+
+.field__hint {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.field__error {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.field__error[hidden] {
+  display: none;
+}
+
+/* Consent checkbox with its text and policy link. */
+.consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-3);
+  align-items: start;
+}
+
+.consent__checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0.125rem 0 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.consent__checkbox[aria-invalid='true'] {
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+}
+
+.consent__text {
+  font-size: var(--font-size-sm);
+}
+
+.consent__label {
+  cursor: pointer;
+}
+
+.consent__link {
+  display: inline-block;
+  margin-top: var(--space-1);
+}
+
+.consent .field__error {
+  grid-column: 1 / -1;
+}

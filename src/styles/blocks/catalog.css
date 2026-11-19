@@ -1,0 +1,34 @@
+/* Catalog page layout: products, and the cart below (mobile) or aside (desktop). */
+.catalog-page {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+  padding-block: var(--space-6) var(--space-7);
+}
+
+.catalog__title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-xxl);
+  color: var(--color-primary-dark);
+}
+
+.catalog__text {
+  margin: 0 0 var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.catalog__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--space-5);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@media (min-width: 64rem) {
+  .catalog-page {
+    grid-template-columns: minmax(0, 1fr) 22rem;
+    padding-block: var(--space-7) var(--space-8);
+  }
+}

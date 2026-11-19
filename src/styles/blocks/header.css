@@ -1,0 +1,124 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgb(255 255 255 / 92%);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(8px);
+}
+
+.header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+  padding-block: var(--space-2);
+}
+
+.logo {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.logo__icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.nav__list {
+  display: flex;
+  gap: var(--space-5);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav__link {
+  display: inline-block;
+  padding-block: var(--space-2);
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition:
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.nav__link:hover,
+.nav__link--active {
+  color: var(--color-primary);
+  border-bottom-color: currentcolor;
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.header-cart {
+  position: relative;
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-sm);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.header-cart:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+
+.header-cart__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.header-cart__label {
+  display: none;
+}
+
+.header-cart__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding-inline: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-surface);
+  background-color: var(--color-primary);
+  border-radius: 0.75rem;
+}
+
+.header-cart__count[hidden] {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .logo {
+    font-size: var(--font-size-lg);
+  }
+
+  .header-cart__label {
+    display: inline;
+  }
+}

@@ -1,0 +1,73 @@
+.hero {
+  position: relative;
+  padding-block: var(--space-8);
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-light) 0%,
+    var(--color-accent-light) 100%
+  );
+}
+
+/* Decorative "harvest" circles; hidden from layout on small screens. */
+.hero::before,
+.hero::after {
+  position: absolute;
+  display: none;
+  content: '';
+  border-radius: 50%;
+}
+
+.hero::before {
+  top: 50%;
+  right: -6rem;
+  width: 24rem;
+  height: 24rem;
+  background-color: rgb(63 125 58 / 18%);
+  transform: translateY(-50%);
+}
+
+.hero::after {
+  right: 10rem;
+  bottom: -3rem;
+  width: 9rem;
+  height: 9rem;
+  background-color: rgb(233 162 59 / 35%);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+.hero__title {
+  max-width: 20ch;
+  margin: 0;
+  font-size: var(--font-size-xxl);
+  color: var(--color-primary-dark);
+}
+
+.hero__text {
+  max-width: 36rem;
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+}
+
+.hero__button {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    padding-block: 6rem;
+  }
+
+  .hero::before,
+  .hero::after {
+    display: block;
+  }
+}

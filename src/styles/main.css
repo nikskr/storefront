@@ -1,0 +1,17 @@
+/* Entry stylesheet: order matters (tokens → base → layout → blocks). */
+@import url('tokens.css');
+@import url('base.css');
+@import url('layout.css');
+@import url('blocks/button.css');
+@import url('blocks/header.css');
+@import url('blocks/hero.css');
+@import url('blocks/slider.css');
+@import url('blocks/advantages.css');
+@import url('blocks/footer.css');
+@import url('blocks/stepper.css');
+@import url('blocks/catalog.css');
+@import url('blocks/product-card.css');
+@import url('blocks/cart.css');
+@import url('blocks/cart-bar.css');
+@import url('blocks/checkout.css');
+@import url('blocks/policy.css');

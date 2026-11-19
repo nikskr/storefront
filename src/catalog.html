@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="{{site.lang}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Каталог — {{site.name}}</title>
+    <meta name="description" content="{{site.description}}" />
+    <meta name="theme-color" content="{{site.themeColor}}" />
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{site.name}}" />
+    <meta property="og:title" content="Каталог — {{site.name}}" />
+    <meta property="og:description" content="{{site.description}}" />
+    <meta property="og:url" content="{{site.url}}/catalog.html" />
+    <meta property="og:image" content="{{site.url}}/{{site.ogImage}}" />
+    <meta property="og:locale" content="{{site.locale}}" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <script type="module" src="pages/catalog.js"></script>
+  </head>
+  <body class="page">
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="index.html">
+          <img
+            class="logo__icon"
+            src="images/favicon.svg"
+            alt=""
+            width="32"
+            height="32"
+          />
+          <span class="logo__text">{{site.name}}</span>
+        </a>
+        <nav class="nav" aria-label="Основная навигация">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="index.html">Главная</a></li>
+            <li>
+              <a
+                class="nav__link nav__link--active"
+                href="catalog.html"
+                aria-current="page"
+                >Каталог</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a class="header-cart" href="#cart" data-header-cart>
+          <svg
+            class="header-cart__icon"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2M10 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+            />
+          </svg>
+          <span class="header-cart__label">Корзина</span>
+          <span
+            class="header-cart__count"
+            data-header-cart-count
+            hidden
+            aria-hidden="true"
+          ></span>
+        </a>
+      </div>
+    </header>
+
+    <main class="page__main" id="main">
+      <noscript>
+        <p class="container noscript">
+          Для работы сайта включите JavaScript в настройках браузера.
+        </p>
+      </noscript>
+      <div class="container catalog-page">
+        <section
+          class="catalog"
+          aria-labelledby="catalog-title"
+          data-catalog
+        ></section>
+        <aside class="cart" id="cart" aria-labelledby="cart-title">
+          <div data-cart></div>
+          <div class="checkout" data-checkout></div>
+        </aside>
+      </div>
+      <p class="visually-hidden" role="status" data-cart-status></p>
+    </main>
+
+    <a class="cart-bar" href="#cart" data-cart-bar hidden></a>
+
+    <footer class="footer" data-footer></footer>
+  </body>
+</html>
