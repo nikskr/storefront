@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
-import { privacyPolicy } from '../data/content.ts';
+import { operator, privacyPolicy } from '../data/content.ts';
 
 // Smoke test: the real privacy.html markup + the page script work together.
 beforeAll(async () => {
@@ -20,7 +20,10 @@ describe('privacy page', () => {
     expect(document.querySelector('#policy-title')?.textContent).toBe(
       privacyPolicy.title
     );
-    expect(document.body.textContent).toContain(privacyPolicy.operator);
+    expect(document.body.textContent).toContain(operator.fullName);
+    expect(document.querySelectorAll('.policy__section')).toHaveLength(
+      privacyPolicy.sections.length
+    );
   });
 
   it('renders the footer', () => {

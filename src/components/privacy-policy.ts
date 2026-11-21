@@ -1,18 +1,32 @@
 import { privacyPolicy } from '../data/content.ts';
 import { el } from '../lib/dom.ts';
+import type { PolicyBlock, PolicyInline, PolicySection } from '../types.ts';
 
-type PrivacyPolicy = typeof privacyPolicy;
+interface PrivacyPolicy {
+  title: string;
+  sections: readonly PolicySection[];
+}
 
-const section = (title: string, body: Node[]) =>
-  el('section', { className: 'policy__section' }, [
-    el('h2', { className: 'policy__subtitle', text: title }),
-    ...body,
-  ]);
+const renderInline = (part: PolicyInline): Node | string =>
+  typeof part === 'string'
+    ? part
+    : el('a', { text: part.email, attrs: { href: `mailto:${part.email}` } });
 
-const paragraph = (text: string) =>
-  el('p', { className: 'policy__text', text });
+function renderBlock(block: PolicyBlock): HTMLElement {
+  if (block.type === 'list') {
+    return el(
+      'ul',
+      { className: 'policy__list' },
+      block.items.map((item) => el('li', { text: item }))
+    );
+  }
+  return el('p', { className: 'policy__text' }, block.parts.map(renderInline));
+}
 
-/** Privacy policy page body built from src/data/content.ts. */
+/**
+ * Privacy policy page body built from src/data/content.ts.
+ * Sections are numbered because the text refers to "п. 1" and "6.1".
+ */
 export function renderPrivacyPolicy(
   root: HTMLElement,
   policy: PrivacyPolicy = privacyPolicy
@@ -23,28 +37,15 @@ export function renderPrivacyPolicy(
       text: policy.title,
       attrs: { id: 'policy-title' },
     }),
-    section('Оператор персональных данных', [
-      paragraph(policy.operator),
-      paragraph(policy.operatorAddress),
-      el('p', { className: 'policy__text' }, [
-        'E-mail: ',
-        el('a', {
-          text: policy.operatorEmail,
-          attrs: { href: `mailto:${policy.operatorEmail}` },
+    ...policy.sections.map((section, i) =>
+      el('section', { className: 'policy__section' }, [
+        el('h2', {
+          className: 'policy__subtitle',
+          text: `${i + 1}. ${section.title}`,
         }),
-      ]),
-    ]),
-    section('Какие данные мы обрабатываем', [
-      el(
-        'ul',
-        { className: 'policy__list' },
-        policy.dataCollected.map((item) => el('li', { text: item }))
-      ),
-    ]),
-    section('Цель обработки', [paragraph(policy.purpose)]),
-    section('Срок хранения', [paragraph(policy.retention)]),
-    section('Передача данных', [paragraph(policy.transfer)]),
-    section('Ваши права', [paragraph(policy.rights)]),
+        ...section.blocks.map(renderBlock),
+      ])
+    ),
     el('a', {
       className: 'button button--secondary policy__back',
       text: 'Вернуться в каталог',

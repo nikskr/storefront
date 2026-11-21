@@ -32,3 +32,16 @@ export interface Advantage {
   title: string;
   text: string;
 }
+
+/** Piece of a policy paragraph: plain text or an e-mail shown as a link. */
+export type PolicyInline = string | { email: string };
+
+/** Paragraph (text with optional e-mail links) or a bulleted list. */
+export type PolicyBlock =
+  | { type: 'paragraph'; parts: readonly PolicyInline[] }
+  | { type: 'list'; items: readonly string[] };
+
+export interface PolicySection {
+  title: string;
+  blocks: readonly PolicyBlock[];
+}
